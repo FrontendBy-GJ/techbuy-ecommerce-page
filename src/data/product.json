@@ -1,0 +1,50 @@
+{
+  "id": "12345",
+  "name": "Apple MacBook Pro",
+  "description": "A high-performance laptop with a 13-inch Retina display, Touch ID, and up to 20 hours of battery life, powered by the Apple M1 chip.",
+  "brand": "Apple",
+  "category": "Laptops",
+  "price": 1299.99,
+  "currency": "USD",
+  "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/MacBook_Pro_2019_13_inch.jpg/640px-MacBook_Pro_2019_13_inch.jpg",
+  "specifications": {
+    "processor": "Apple M1 chip",
+    "memory": "8GB or 16GB",
+    "storage": "256GB, 512GB, 1TB, or 2TB SSD",
+    "display": "13.3-inch Retina display",
+    "graphics": "8-core GPU",
+    "battery_life": "Up to 20 hours",
+    "dimensions": "11.97 x 8.36 x 0.61 inches",
+    "weight": "3.0 pounds"
+  },
+  "reviews": [
+    {
+      "id": "1",
+      "author": "John Smith",
+      "rating": 5,
+      "text": "The MacBook Pro is incredibly powerful! I use it for video editing, and it handles everything with ease.",
+      "timestamp": "2023-03-15T14:45:00Z"
+    },
+    {
+      "id": "2",
+      "author": "Sarah Johnson",
+      "rating": 4,
+      "text": "I love the speed and display, but I wish it had more ports. I often need an adapter for accessories.",
+      "timestamp": "2023-03-20T08:20:00Z"
+    }
+  ],
+  "related_products": [
+    {
+      "id": "67890",
+      "name": "Apple iPad Pro",
+      "price": 799.99,
+      "image": "https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/10/Apple-iPad-Pro-space-gray-2up-221018_big.jpg.large_2x.jpg"
+    },
+    {
+      "id": "54321",
+      "name": "Apple iPhone 13",
+      "price": 699.99,
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/IPhone_13_for_Tora_%2852641558635%29.jpg/640px-IPhone_13_for_Tora_%2852641558635%29.jpg"
+    }
+  ]
+}
