@@ -1,0 +1,13 @@
+@use './colors' as *;
+
+@mixin button($bg-clr: $yellow) {
+  border: none;
+  border-radius: 5px;
+  background-color: $bg-clr;
+  cursor: pointer;
+  transition: transform 75ms ease-in-out;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

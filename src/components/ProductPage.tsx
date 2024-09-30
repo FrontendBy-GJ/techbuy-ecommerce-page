@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import product from '../data/product.json';
 import useCartContext from '../hooks/useCartContext';
 import useCartModalContext from '../hooks/useCartModalContext';
@@ -10,9 +9,7 @@ import { calculateDaysAgo } from '../utils/calculateDaysAgo';
 export default function ProductPage() {
   const { dispatch, state } = useCartContext();
   const { setIsCartModalOpen } = useCartModalContext();
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+
   const {
     id,
     image,
