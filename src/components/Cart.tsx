@@ -43,27 +43,30 @@ export default function Cart() {
         {!state.items.length ? (
           <p>Your cart is empty!</p>
         ) : (
-          <>
+          <div className="cart-items">
             {state.items.map(({ id, name, price }) => (
-              <div key={id}>
-                <h3>{name}</h3>
-                <span>{formatToUSDCurrency(price)}</span>
-                <br />
+              <div className="cart-item" key={id}>
                 <div>
-                  <br />
-                  <label htmlFor="quantity">
-                    {' '}
-                    <abbr title="Quantity">Qty</abbr>{' '}
-                  </label>
-                  <select
-                    value={quantity}
-                    name="quantity"
-                    id="quantity"
-                    onChange={handleQtyChange}
-                  >
-                    {quantityOptions()}
-                  </select>
-                  <br />
+                  <h3>{name}</h3>
+                  <span>{formatToUSDCurrency(price)}</span>
+                </div>
+                <br />
+                <div className="cart-actions">
+                  <>
+                    <label htmlFor="quantity">
+                      {' '}
+                      <abbr title="Quantity">Qty</abbr>{' '}
+                    </label>
+                    <select
+                      value={quantity}
+                      name="quantity"
+                      id="quantity"
+                      onChange={handleQtyChange}
+                    >
+                      {quantityOptions()}
+                    </select>
+                  </>
+
                   <button
                     type="button"
                     aria-label={`Remove ${name} from cart`}
@@ -81,11 +84,11 @@ export default function Cart() {
                 </div>
               </div>
             ))}
-          </>
+          </div>
         )}
         <footer>
           <hr />
-          <div>
+          <div className="cart-total">
             <span>Total: </span>
             <span>{formatToUSDCurrency(state.total)}</span>
           </div>
@@ -105,7 +108,7 @@ export default function Cart() {
               Continue Shopping
             </button>
           )}
-          <br />
+
           <button
             aria-label="Close cart"
             title="Close"

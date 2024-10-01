@@ -5,9 +5,25 @@
   border-radius: 5px;
   background-color: $bg-clr;
   cursor: pointer;
-  transition: transform 75ms ease-in-out;
+  transition: transform 75ms ease-in-out, filter 75ms linear;
 
   &:active {
-    transform: scale(0.9);
+    transform: scale(0.99);
+  }
+  &:hover {
+    filter: contrast(90%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    &:focus-visible {
+      transition: outline-offset 75ms ease-out;
+    }
+    &:not(:active):focus-visible {
+      transition-duration: 0.25s;
+    }
+  }
+
+  &:not(:active):focus-visible {
+    outline-offset: 0.3rem;
   }
 }

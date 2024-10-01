@@ -50,7 +50,13 @@ export default function ProductPage() {
             &#9733; {avgRating(reviews)} <span>({reviews.length} reviews)</span>
           </a>
           <p>{formatToUSDCurrency(price)}</p>
-          <button onClick={handleAddToCart}>Add to cart</button>
+          {state.items[0]?.id === id ? (
+            <button onClick={() => setIsCartModalOpen(true)}>
+              Added to cart
+            </button>
+          ) : (
+            <button onClick={() => handleAddToCart()}>Add to cart</button>
+          )}
         </div>
       </div>
       <h2>About this item</h2>
