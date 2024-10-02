@@ -1,11 +1,10 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useRef } from 'react';
 import useCartContext from '../hooks/useCartContext';
 import { formatToUSDCurrency } from '../utils/formatCurrency';
 import useCartModalContext from '../hooks/useCartModalContext';
 
 export default function Cart() {
   const { state, dispatch } = useCartContext();
-  const [quantity, setQuantity] = useState(1);
   const { isCartModalOpen, setIsCartModalOpen } = useCartModalContext();
   const cartRef = useRef<HTMLDialogElement>(null);
 
@@ -17,13 +16,12 @@ export default function Cart() {
     }
   }, [isCartModalOpen]);
 
-  const handleQtyChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleQtyChange = (e: ChangeEvent<HTMLSelectElement>, id: string) => {
     const selectedQty = Number(e.target.value);
-    setQuantity(() => selectedQty);
     dispatch({
       type: 'SET_QUANTITY',
       payload: {
-        id: state.items[0].id,
+        id,
         quantity: selectedQty,
       },
     });
@@ -44,7 +42,7 @@ export default function Cart() {
           <p>Your cart is empty!</p>
         ) : (
           <div className="cart-items">
-            {state.items.map(({ id, name, price }) => (
+            {state.items.map(({ id, name, price, quantity }) => (
               <div className="cart-item" key={id}>
                 <div>
                   <h3>{name}</h3>
@@ -53,15 +51,15 @@ export default function Cart() {
                 <br />
                 <div className="cart-actions">
                   <>
-                    <label htmlFor="quantity">
+                    <label htmlFor={`${name}-quantity`}>
                       {' '}
                       <abbr title="Quantity">Qty</abbr>{' '}
                     </label>
                     <select
                       value={quantity}
-                      name="quantity"
-                      id="quantity"
-                      onChange={handleQtyChange}
+                      name={`${name}-quantity`}
+                      id={`${name}-quantity`}
+                      onChange={(e) => handleQtyChange(e, id)}
                     >
                       {quantityOptions()}
                     </select>
@@ -76,7 +74,6 @@ export default function Cart() {
                         type: 'REMOVE_FROM_CART',
                         payload: { id },
                       });
-                      setQuantity(1);
                     }}
                   >
                     &times;

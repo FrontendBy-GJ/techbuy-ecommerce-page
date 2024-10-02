@@ -10,6 +10,7 @@
   header {
     background-color: unset;
     text-align: center;
+    pointer-events: none;
   }
 
   hr {
@@ -55,12 +56,14 @@
 
         button {
           @include button($gray);
-          font-size: 2rem;
-          font-weight: 700;
-          color: $white;
-          padding-inline: 0.8rem;
-          height: 100%;
-          aspect-ratio: 1;
+          & {
+            font-size: 2rem;
+            font-weight: 700;
+            color: $white;
+            padding-inline: 0.8rem;
+            height: 100%;
+            aspect-ratio: 1;
+          }
         }
       }
     }
@@ -79,30 +82,36 @@
 
       .checkout-btn {
         @include button($yellow);
-        font-weight: 700;
-        padding: 0.5rem 0;
+        & {
+          font-weight: 700;
+          padding: 0.5rem 0;
+        }
       }
 
       .continue-shopping-btn {
         @include button($blue);
-        color: $white;
-        font-weight: 700;
-        padding: 0.5rem 0;
+        & {
+          color: $white;
+          font-weight: 700;
+          padding: 0.5rem 0;
+        }
       }
 
       .close-btn {
         @include button(transparent);
-        display: grid;
-        align-content: center;
-        height: 25px;
-        aspect-ratio: 1;
-        color: $gray;
-        font-size: 2rem;
-        font-weight: 600;
-        padding: 25px;
-        position: absolute;
-        top: 10px;
-        right: 15px;
+        & {
+          display: grid;
+          align-content: center;
+          height: 25px;
+          aspect-ratio: 1;
+          color: $gray;
+          font-size: 2rem;
+          font-weight: 600;
+          padding: 25px;
+          position: absolute;
+          top: 10px;
+          right: 15px;
+        }
       }
     }
   }
@@ -124,9 +133,11 @@
     }
   }
 
-  min-height: 100dvh;
-  max-width: 100dvw;
-  width: 100%;
+  & {
+    min-height: 100dvh;
+    max-width: 100dvw;
+    width: 100%;
+  }
 
   @starting-style {
     &[open],
@@ -136,10 +147,12 @@
 
     &[open] {
       transform: translatey(500px);
+      display: block;
     }
   }
   &:not([open]) {
     transform: translatey(500px);
+    display: none;
   }
   &::backdrop {
     background-color: black;

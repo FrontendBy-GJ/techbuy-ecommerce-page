@@ -1,5 +1,5 @@
 @use 'base';
-@use 'abstracts';
+@use 'abstracts' as *;
 @use 'components';
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
@@ -8,4 +8,9 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   font-family: 'Source Sans 3', sans-serif;
+}
+
+main {
+  max-width: $max-width;
+  margin-inline: auto;
 }

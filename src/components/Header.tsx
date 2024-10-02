@@ -12,7 +12,11 @@ export default function Header() {
           Tech<span>Buy</span>
         </span>
         <button onClick={() => setIsCartModalOpen(true)}>
-          {state.items?.length ? <span>{state.items[0]?.quantity}</span> : null}
+          {state.items?.length ? (
+            <span>
+              {state.items.reduce((qty, item) => qty + item.quantity, 0)}
+            </span>
+          ) : null}
           <svg
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"

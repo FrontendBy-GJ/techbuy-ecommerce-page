@@ -1,0 +1,257 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors' as *;
+@use '../abstracts/breakpoints' as *;
+
+#product-page {
+  display: grid;
+  gap: 2rem;
+  margin-block-start: 2rem;
+
+  .product {
+    display: grid;
+
+    figure {
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 0 0;
+      }
+    }
+
+    .product-info {
+      display: grid;
+      gap: 1rem;
+      padding: 1rem;
+
+      .brand {
+        justify-self: start;
+        background-color: $gray;
+        border-radius: 99999px;
+        color: $white;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.1rem 1.5rem;
+        cursor: pointer;
+      }
+
+      .name-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .rating {
+          a {
+            text-decoration: none;
+            &:visited {
+              color: unset;
+            }
+            &:hover {
+              text-decoration: underline;
+            }
+            .star {
+              color: $blue;
+            }
+          }
+        }
+
+        .price {
+          font-size: 1.3rem;
+        }
+      }
+      button {
+        @include button;
+        & {
+          display: block;
+          padding: 0.5rem 1.5rem;
+          font-weight: 600;
+        }
+      }
+    }
+
+    @media only screen and (min-width: 768px) {
+      padding-inline: 2rem;
+      grid-template-columns: 1fr 1fr;
+
+      .product-info {
+        align-content: start;
+        width: 100%;
+      }
+
+      & figure::after {
+        pointer-events: none;
+        display: var(--display);
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-image: var(--img);
+        background-size: 200%;
+        background-position: var(--zoom-x) var(--zoom-y);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    @media only screen and (min-width: 64rem) {
+      padding-inline: 4rem;
+
+      .product-info {
+        button {
+          justify-self: start;
+        }
+
+        .name-price {
+          div h1 {
+            font-size: 1.7rem;
+            text-wrap: pretty;
+          }
+        }
+      }
+    }
+  }
+}
+
+#product-page {
+  .about,
+  .related,
+  .reviews {
+    padding-inline: 1rem;
+
+    h2 {
+      margin-block: 1rem;
+      text-align: center;
+    }
+  }
+
+  .about {
+    details {
+      overflow: hidden;
+      border-bottom: 1px solid $gray;
+
+      &[open] {
+        border-style: dashed;
+      }
+
+      summary {
+        font-size: 1.3rem;
+        font-weight: 600;
+        display: block;
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 4rem;
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+        &::before {
+          content: '►';
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          margin-right: 0.5rem;
+          transition: rotate 400ms ease-out;
+        }
+      }
+      &[open] summary::before {
+        rotate: 90deg;
+        transition: rotate 400ms ease-out;
+      }
+      & + .content {
+        box-sizing: border-box;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 1.5rem;
+        margin-block: 1rem;
+        transition: max-height 400ms ease-out;
+
+        ~ ul {
+          list-style-position: inside;
+
+          li b {
+            text-transform: capitalize;
+          }
+        }
+      }
+      &[open] + .content {
+        max-height: 800px;
+        transition: max-height 400ms ease-out;
+      }
+    }
+  }
+
+  .related {
+    overflow: hidden;
+    .cards {
+      display: grid;
+      gap: 2rem;
+      place-content: center;
+      grid-auto-columns: 350px;
+
+      .related-prod-card {
+        @include related-prod-card;
+      }
+    }
+  }
+
+  .reviews {
+    .review {
+      border: 1px solid $gray;
+      border-radius: 15px;
+      margin-block: 2rem;
+      padding: 1rem 2rem;
+      max-width: 60rem;
+      margin-inline: auto;
+      display: grid;
+      gap: 1rem;
+      grid-template-rows: auto 1fr;
+
+      .review-info {
+        display: flex;
+        flex-direction: column-reverse;
+
+        .author-time {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          time {
+            font-size: 0.9rem;
+          }
+        }
+        .star-rating {
+          font-size: 0.9rem;
+          .star {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .about,
+    .related,
+    .reviews {
+      padding-inline: 2rem;
+    }
+
+    .related {
+      .cards {
+        grid-template-columns: repeat(var(--related-prod-items), 300px);
+        grid-auto-rows: 1fr;
+      }
+    }
+  }
+  @media only screen and (min-width: 64rem) {
+    .about,
+    .related,
+    .reviews {
+      padding-inline: 4rem;
+    }
+  }
+}

@@ -14,16 +14,60 @@
     filter: contrast(90%);
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    &:focus-visible {
-      transition: outline-offset 75ms ease-out;
+  & {
+    @media (prefers-reduced-motion: no-preference) {
+      &:focus-visible {
+        transition: outline-offset 75ms ease-out;
+      }
+      &:not(:active):focus-visible {
+        transition-duration: 0.25s;
+      }
     }
     &:not(:active):focus-visible {
-      transition-duration: 0.25s;
+      outline-offset: 0.3rem;
+    }
+  }
+}
+
+@mixin related-prod-card {
+  border: 1px solid $gray;
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr auto;
+
+  figure {
+    cursor: pointer;
+    img {
+      display: block;
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      object-position: center center;
+      background-size: cover;
     }
   }
 
-  &:not(:active):focus-visible {
-    outline-offset: 0.3rem;
+  .related-prod-info {
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  button {
+    @include button;
+    & {
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      justify-self: end;
+      margin: 1rem;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    figure img {
+      height: 300px;
+    }
   }
 }
