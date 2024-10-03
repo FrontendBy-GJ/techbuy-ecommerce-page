@@ -14,6 +14,12 @@ function App() {
           <Header />
           <main>
             <ProductPage />
+            <a
+              href="#"
+              className="back-to-top-btn"
+              title="Back to Top"
+              aria-label="Back to Top"
+            ></a>
           </main>
         </CartModalProvider>
       </CartProvider>
