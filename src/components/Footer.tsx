@@ -1,11 +1,15 @@
 export default function Footer() {
   return (
-    <footer>
-      Coded by{' '}
-      <a tabIndex={0} href="https://garciadev.netlify.app/">
-        FrontendBy-GJ
-      </a>
-      .
+    <footer className="footer">
+      <section>
+        <small>
+          Coded by{' '}
+          <a tabIndex={0} target="_blank" href="https://garciadev.netlify.app/">
+            FrontendBy-GJ
+          </a>
+          .
+        </small>
+      </section>
     </footer>
   );
 }

@@ -1,0 +1,20 @@
+@use '../abstracts/colors' as *;
+@use '../abstracts/breakpoints' as *;
+
+.footer {
+  background-color: $blue;
+  padding-block: 1rem;
+  text-align: center;
+  color: $white;
+
+  section {
+    max-width: $max-width;
+    margin-inline: auto;
+
+    small a {
+      color: $yellow;
+      font-weight: 600;
+      text-underline-offset: 5px;
+    }
+  }
+}
