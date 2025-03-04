@@ -19,6 +19,11 @@ function App() {
               className="back-to-top-btn"
               title="Back to Top"
               aria-label="Back to Top"
+              tabIndex={0}
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0 });
+              }}
             ></a>
           </main>
         </CartModalProvider>

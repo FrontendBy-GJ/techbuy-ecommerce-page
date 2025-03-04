@@ -77,7 +77,16 @@ export default function ProductPage() {
             <div>
               <h1>{name}</h1>
               <div className="rating">
-                <a href="#reviews">
+                <a
+                  href="#reviews"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const targetEl = document.querySelector('#reviews');
+                    if (targetEl) {
+                      targetEl.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
                   <span className="star">&#9733;</span> {avgRating(reviews)}{' '}
                   <span>({reviews.length} reviews)</span>
                 </a>
